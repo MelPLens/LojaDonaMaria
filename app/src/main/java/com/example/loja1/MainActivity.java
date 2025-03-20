@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Referenciando os componentes do layout
+        // Referenciando
         editTextNome = findViewById(R.id.editTextNome);
         buttonCadastrarCliente = findViewById(R.id.button2);
         buttonMaiores = findViewById(R.id.buttonMaiores);
@@ -27,29 +27,30 @@ public class MainActivity extends AppCompatActivity {
         buttonPontos = findViewById(R.id.buttonPontos);
         buttonPreferencias = findViewById(R.id.buttonPreferencias);
 
-        // Configurando os listeners para os botões
-        buttonCadastrarCliente.setOnClickListener(view -> eventoBotao(view));
+
+        buttonCadastrarCliente.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, CadastroActivity.class);
+            startActivity(intent);
+        });
 
         buttonMaiores.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, NovaActivity.class);
             startActivity(intent);
         });
 
-        buttonCalculadora.setOnClickListener(view -> Toast.makeText(this, "Abrir calculadora", Toast.LENGTH_SHORT).show());
-
-        buttonPontos.setOnClickListener(view -> {
-            String nome = editTextNome.getText().toString();
-            if (!nome.isEmpty()) {
-                Toast.makeText(this, "Seu nome é: " + nome, Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Digite seu nome primeiro!", Toast.LENGTH_SHORT).show();
-            }
+        buttonCalculadora.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, CalculadoraActivity.class);
+            startActivity(intent);
         });
 
-        buttonPreferencias.setOnClickListener(view -> Toast.makeText(this, "Abrir Preferências", Toast.LENGTH_SHORT).show());
-    }
+        buttonPontos.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, DigitarActivity.class);
+            startActivity(intent);
+        });
 
-    public void eventoBotao(View view) {
-        Toast.makeText(this, "O botão foi criado", Toast.LENGTH_SHORT).show();
+        buttonPreferencias.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, PreferenciasActivity.class);
+            startActivity(intent);
+        });
     }
 }
